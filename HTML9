@@ -1,0 +1,17 @@
+from flask import Flask, jsonify
+from flask_cors import CORS
+
+app = Flask(__name__)
+CORS(app)  # Разрешаем CORS для связи с фронтендом
+
+@app.route('/api/data', methods=['GET'])
+def get_data():
+    data = [
+        {"id": 1, "name": "Продукт 1", "price": 100},
+        {"id": 2, "name": "Продукт 2", "price": 200},
+        {"id": 3, "name": "Продукт 3", "price": 300}
+    ]
+    return jsonify(data)
+
+if __name__ == "__main__":
+    app.run(debug=True, port=5000)
